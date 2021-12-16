@@ -25,6 +25,30 @@ class Admin extends CI_Controller {
     
     public function dashboard()
 	{
+		$this->load->view('layout/header');
 		$this->load->view('dashboard');
+		$this->load->view('layout/footer');
 	}
+
+	public function create()
+	{
+		if($this->input->server('REQUEST_METHOD') == 'POST'){
+			$data = array(
+				'id' => $this->input->post('id'),
+				'nama_kue' => $this->input->post('namakue'),
+				'harga' => $this->input->post('harga'),
+				'deskripsi' => $this->input->post('desc')
+			);
+			$this->db->insert('cake_table', $data);
+
+			redirect('admin/dashboard');
+		}
+		else{
+			$this->load->view('layout/header');
+		$this->load->view('dashboard');
+		$this->load->view('layout/footer');
+		}
+	}
+
+	
 }
