@@ -1,8 +1,8 @@
 
-      <!-- end header inner -->
+      <!-- end header inner
       <!-- end header -->
       <!-- banner -->
-      <section class="banner_main">
+      <!-- <section class="banner_main">
          <div id="myCarousel" class="carousel slide banner" data-ride="carousel">
             <ol class="carousel-indicators">
                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -44,7 +44,7 @@
                            </div>
                            <div class="mb-3">
                            <label for="exampleInputPassword1" class="form-label">Nama Kue</label>
-                           <input type="text" class="form-control" id="nama_kue" name= "nama_kue" placeholder = "e.g Cheesecake">
+                           <input type="text" class="form-control" id="namakue" name= "namakue" placeholder = "e.g Cheesecake">
                            </div>
                            <div class="mb-3">
                            <label for="exampleInputPassword1" class="form-label">Harga Kue</label>
@@ -52,39 +52,23 @@
                            </div>
                            <div class="mb-3">
                            <label for="exampleInputPassword1" class="form-label">Deskripsi</label>
-                           <input type="text" class="form-control" id="deskripsi" name = "deskripsi">
+                           <input type="text" class="form-control" id="desc" name = "desc">
                            </div>
               
              <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-                        <!-- <form class="book_now">
-                           <div class="row">
-                              <div class="col-md-12">
-                                 <span>Arrival</span>
-                                 <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="dd/mm/yyyy">
-                              </div>
-                              <div class="col-md-12">
-                                 <span>Departure</span>
-                                 <img class="date_cua" src="images/date.png">
-                                 <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="dd/mm/yyyy">
-                              </div>
-                              <div class="col-md-12">
-                                 <button class="book_btn">Book Now</button>
-                              </div>
-                           </div>
-                        </form> -->
                      </div>
                   </div>
                </div>
             </div>
          </div>
-      </section>
+      </section> -->
       <!-- end banner -->
       <!-- about -->
      
       <!-- end about -->
       <!-- our_room -->
-      <div  class="our_room">
+      <!-- <div  class="our_room">
          <div class="container">
             <div class = "titlepage">
             <h2>Ini Daftar Kue Kamu</h2>
@@ -108,7 +92,7 @@
                <td> <?= $data->harga ?></td>
                <td> <?= $data->deskripsi ?></td>
                <td>
-               <a href= "<?= base_url('admin/edit/'. $data->id)?>" type="button" class="btn btn-primary">Edit</a>
+               <a href= "<?= base_url('admin/update/'. $data->id)?>" type="button" class="btn btn-primary">Edit</a>
                <a href= "#" type="button" class="btn btn-danger">Delete</a>
                </td>
                </tr>   
@@ -118,7 +102,7 @@
          
           </table>
          </div>
-      </div>
+      </div> -->
       <!-- end our_room -->
       <!-- gallery -->
      
@@ -139,5 +123,42 @@
       <!-- sidebar -->
       <script src="<?php echo base_url()?>assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="<?php echo base_url()?>assets/js/custom.js"></script>
-   </body>
-</html>
+ 
+
+
+
+
+
+ <div class="booking_ocline">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-8">
+                     <div class="book_room">
+                        <h1>Masukkan Update</h1>
+                        <?php foreach($data as $data) { ?>
+                        <form method = "post" action = "<?= base_url('admin/update/')?>">
+                           <div class="mb-3">
+                           <label for="exampleInputEmail1" class="form-label">ID</label>
+                           <input type="text" class="form-control" id="id" name= "id" value= "<?= $data->id?>" >
+                           </div>
+                           <div class="mb-3">
+                           <label for="exampleInputPassword1" class="form-label">Nama Kue</label>
+                           <input type="text" class="form-control" id="nama_kue" name= "nama_kue" value= "<?= $data->nama_kue?>" >
+                           </div>
+                           <div class="mb-3">
+                           <label for="exampleInputPassword1" class="form-label">Harga Kue</label>
+                           <input type="text" class="form-control" id="harga" name = "harga" value= "<?= $data->harga?>" >
+                           </div>
+                           <div class="mb-3">
+                           <label for="exampleInputPassword1" class="form-label">Deskripsi</label>
+                           <input type="text" class="form-control" id="deskripsi" name = "deskripsi" value= "<?= $data->deskripsi?>" >
+                           </div>
+              
+             <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+            <?php } ?>
+</div>
+</div>
+</div>
+</div>
+</div> 

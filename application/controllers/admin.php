@@ -25,8 +25,11 @@ class Admin extends CI_Controller {
     
     public function dashboard()
 	{
+		$this->load->model('m_toko');
+		$data['cake_table']= $this->m_toko->get_data();
 		$this->load->view('layout/header');
-		$this->load->view('dashboard');
+		$this->load->view('dashboard', $data);
+		$this->load->view('layout/about');
 		$this->load->view('layout/footer');
 	}
 
@@ -35,19 +38,48 @@ class Admin extends CI_Controller {
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$data = array(
 				'id' => $this->input->post('id'),
-				'nama_kue' => $this->input->post('namakue'),
+				'nama_kue' => $this->input->post('nama_kue'),
 				'harga' => $this->input->post('harga'),
-				'deskripsi' => $this->input->post('desc')
+				'deskripsi' => $this->input->post('deskripsi')
 			);
 			$this->db->insert('cake_table', $data);
 
 			redirect('admin/dashboard');
 		}
 		else{
-			$this->load->view('layout/header');
-		$this->load->view('dashboard');
+		$this->load->view('layout/header');
+		$this->load->view('create');
 		$this->load->view('layout/footer');
 		}
+	}
+
+	public function edit($id)
+	{
+		$where = array('id' => $id);
+		$data['data'] = $this->m_toko->edit_data($where, 'cake_table')->result();
+		$this->load->view('layout/header');
+		$this->load->view('update', $data);
+	}
+
+	public function update(){
+		$id = $this->input->post('id');
+		$nama_kue = $this->input->post('nama_kue');
+		$harga = $this->input->post('harga');
+		$deskripsi = $this->input->post('deskripsi');
+
+		$data = array(
+			'id' => $id,
+			'nama_kue' =>$nama_kue,
+			'harga' => $harga,
+			'deskripsi' => $deskripsi
+		);
+
+		$where = array(
+			'id' =>$id
+		);
+
+		$this->m_toko->update_data($where, $data, 'cake_table');
+		redirect('admin/dashboard');
 	}
 
 	
