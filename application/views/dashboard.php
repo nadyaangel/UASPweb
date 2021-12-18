@@ -3,6 +3,7 @@
       <!-- end header -->
       <!-- banner -->
       <section class="banner_main">
+    
          <div id="myCarousel" class="carousel slide banner" data-ride="carousel">
             <ol class="carousel-indicators">
                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -11,15 +12,15 @@
             </ol>
             <div class="carousel-inner">
                <div class="carousel-item active">
-                  <img class="first-slide" src="<?php echo base_url()?>assets/images/banner1.jpg" alt="First slide">
+                  <img class="d-block w-100" src="<?php echo base_url()?>assets/images/kue.jpg" alt="First slide">
                   <div class="container">
                   </div>
                </div>
                <div class="carousel-item">
-                  <img class="second-slide" src="<?php echo base_url()?>assets/images/banner2.jpg" alt="Second slide">
+                  <img class="d-block w-100" src="<?php echo base_url()?>assets/images/cheesecake.jpg" alt="Second slide">
                </div>
                <div class="carousel-item">
-                  <img class="third-slide" src="<?php echo base_url()?>assets/images/banner3.jpg" alt="Third slide">
+                  <img class="d-block w-100" src="<?php echo base_url()?>assets/images/cookies.jpg" alt="Third slide">
                </div>
             </div>
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
@@ -97,7 +98,7 @@
                <td><b>Nama Kue<b></td>
                <td><b>Harga Kue <b></td>
                <td><b>Deskripsi <b></td>
-               <td><b>Aksi <b></td>
+               <td colspan = "2"><b>Aksi <b></td>
             </tr>
             </thead>
             <tbody>
@@ -107,10 +108,8 @@
                <td> <?= $data->nama_kue ?></td>
                <td> <?= $data->harga ?></td>
                <td> <?= $data->deskripsi ?></td>
-               <td>
-               <a href= "<?= base_url('admin/edit/'. $data->id)?>" type="button" class="btn btn-primary">Edit</a>
-               <a href= "#" type="button" class="btn btn-danger">Delete</a>
-               </td>
+               <td><a href= "<?= base_url('admin/edit/'. $data->id)?>" type="button" class="btn btn-primary">Edit</a></td>
+               <td onclick= "javascript: return confirm('Yakin mau menghapus kue ini?')"><a href= "<?= base_url('admin/hapus/'. $data->id)?>" type="button" class="btn btn-danger">Delete</a></td>
                </tr>   
                
                <?php } ?>
